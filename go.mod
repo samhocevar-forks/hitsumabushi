@@ -1,3 +1,3 @@
-module github.com/samhocevar-forks/hitsumabushi
+module github.com/hajimehoshi/hitsumabushi
 
 go 1.17
