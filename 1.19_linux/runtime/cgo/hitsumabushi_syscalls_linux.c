@@ -6,9 +6,11 @@
 #include <pthread.h>
 #include <errno.h>
 #include <string.h>
+#if __linux__
 #include <signal.h>
-#include <stdlib.h>
 #include <stdatomic.h>
+#endif
+#include <stdlib.h>
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <unistd.h> // for usleep
@@ -17,6 +19,7 @@
 #include "libcgo_unix.h"
 
 typedef unsigned int gid_t;
+struct sigaction;
 
 extern int hitsumabushi_clock_gettime(clockid_t clk_id, struct timespec *tp);
 extern int32_t hitsumabushi_getproccount();

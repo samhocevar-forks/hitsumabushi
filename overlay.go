@@ -246,6 +246,7 @@ func GenOverlayJSON(options ...Option) ([]byte, error) {
 			}
 			patched, err := p.apply(orig)
 			if err != nil {
+				println("Failed to patch " + origPath)
 				return err
 			}
 			if _, err := io.Copy(dst, patched); err != nil {

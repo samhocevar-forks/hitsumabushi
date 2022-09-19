@@ -1,0 +1,31 @@
+//--from
+#include <signal.h>
+//--to
+#if 0
+#include <signal.h>
+#endif
+//--from
+#include <stdlib.h>
+//--to
+#include <stdlib.h>
+#include <unistd.h> // for usleep
+//--from
+	sigset_t ign, oset;
+//--to
+#if 0
+	sigset_t ign, oset;
+#endif
+//--from
+	sigfillset(&ign);
+	pthread_sigmask(SIG_SETMASK, &ign, &oset);
+//--to
+#if 0
+	sigfillset(&ign);
+	pthread_sigmask(SIG_SETMASK, &ign, &oset);
+#endif
+//--from
+	pthread_sigmask(SIG_SETMASK, &oset, nil);
+//--to
+#if 0
+	pthread_sigmask(SIG_SETMASK, &oset, nil);
+#endif
