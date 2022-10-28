@@ -1,0 +1,39 @@
+//--from
+type Stat_t struct {
+	Dev       uint64
+	Ino       uint64
+	Nlink     uint64
+	Mode      uint32
+	Uid       uint32
+	Gid       uint32
+	X__pad0   int32
+	Rdev      uint64
+	Size      int64
+	Blksize   int64
+	Blocks    int64
+	Atim      Timespec
+	Mtim      Timespec
+	Ctim      Timespec
+	X__unused [3]int64
+}
+//--to
+type Stat_t struct {
+	Dev       uint32
+	Ino       uint32
+	Mode      uint16
+	Nlink     uint16
+	Uid       uint32
+	Gid       uint32
+	Rdev      uint32
+	Atim      Timespec
+	Mtim      Timespec
+	Ctim      Timespec
+	Size      int64
+	Blocks    int64
+	Blksize   int32
+	Flags     uint32
+	Gen       uint32
+	Spare     int32
+	Btim      Timespec
+	X__unused [3]int64
+}

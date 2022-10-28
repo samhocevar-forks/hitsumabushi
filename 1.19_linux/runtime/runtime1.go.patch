@@ -17,5 +17,5 @@ func args(c int32, v **byte) {
 	// Malloc is not defined yet and getting an address of a global variable might fail here.
 	// Overwrite goargs later.
 
-	physPageSize = 4096
+	physPageSize = 4 * 4096
 }
