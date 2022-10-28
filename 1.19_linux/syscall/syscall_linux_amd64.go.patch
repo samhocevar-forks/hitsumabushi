@@ -1,0 +1,16 @@
+//--from
+func Stat(path string, stat *Stat_t) (err error) {
+	return fstatat(_AT_FDCWD, path, stat, 0)
+}
+//--to
+func Stat(path string, stat *Stat_t) (err error) {
+	return fstatat(_AT_FDCWD, RewriteFileName(path), stat, 0)
+}
+//--from
+func Lstat(path string, stat *Stat_t) (err error) {
+	return fstatat(_AT_FDCWD, path, stat, _AT_SYMLINK_NOFOLLOW)
+}
+//--to
+func Lstat(path string, stat *Stat_t) (err error) {
+	return fstatat(_AT_FDCWD, RewriteFileName(path), stat, _AT_SYMLINK_NOFOLLOW)
+}

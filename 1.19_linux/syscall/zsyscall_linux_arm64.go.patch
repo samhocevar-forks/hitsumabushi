@@ -1,0 +1,16 @@
+//--from
+func Fstatat(fd int, path string, stat *Stat_t, flags int) (err error) {
+	var _p0 *byte
+	_p0, err = BytePtrFromString(path)
+//--to
+func Fstatat(fd int, path string, stat *Stat_t, flags int) (err error) {
+	var _p0 *byte
+	_p0, err = BytePtrFromString(RewriteFileName(path))
+//--from
+func fstatat(dirfd int, path string, stat *Stat_t, flags int) (err error) {
+	var _p0 *byte
+	_p0, err = BytePtrFromString(path)
+//--to
+func fstatat(dirfd int, path string, stat *Stat_t, flags int) (err error) {
+	var _p0 *byte
+	_p0, err = BytePtrFromString(RewriteFileName(path))
