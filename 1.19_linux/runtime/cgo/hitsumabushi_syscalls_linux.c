@@ -21,6 +21,7 @@ typedef unsigned int gid_t;
 extern int hitsumabushi_clock_gettime(clockid_t clk_id, struct timespec *tp);
 extern int32_t hitsumabushi_getproccount();
 
+#if 0
 void *mmap(void *addr, size_t length, int prot, int flags, int fd, off_t offset) {
   abort();
   return NULL;
@@ -221,6 +222,7 @@ int32_t c_open(char *name, int32_t mode, int32_t perm) {
 int32_t c_osyield() {
   return sched_yield();
 }
+#endif
 
 int32_t c_sched_getaffinity(pid_t pid, size_t cpusetsize, void *mask) {
     int32_t numcpu = hitsumabushi_getproccount();
@@ -232,6 +234,7 @@ int32_t c_sched_getaffinity(pid_t pid, size_t cpusetsize, void *mask) {
     return (numcpu + 7) / 8;
 }
 
+#if 0
 int32_t c_read(int32_t fd, void *p, int32_t n) {
   if (fd >= kFDOffset) {
     return read_pseudo_file(fd, p, n);
@@ -311,3 +314,4 @@ int c_fstatat(int fd, char* name, struct stat* p, int flags)
 void c_exit(int32_t code) {
   exit(code);
 }
+#endif

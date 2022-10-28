@@ -130,3 +130,11 @@ func RewriteFileName(name string) string {
 	}
 	return name
 }
+//--from
+	var fmode uint32
+//--to
+	var fmode uint16
+//--from
+	if fmode&mode == mode {
+//--to
+	if uint32(fmode)&mode == mode {

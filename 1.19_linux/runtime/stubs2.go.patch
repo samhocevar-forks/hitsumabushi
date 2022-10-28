@@ -5,15 +5,17 @@ import (
 	"internal/abi"
 	"unsafe"
 )
+
 //--from
 func read(fd int32, p unsafe.Pointer, n int32) int32
 //--to
 //go:nosplit
 //go:cgo_unsafe_args
-func read(fd int32, p unsafe.Pointer, n int32) int32 {
+func read(fd uintptr, p unsafe.Pointer, n int32) int32 {
 	return libcCall(unsafe.Pointer(abi.FuncPCABI0(read_trampoline)), unsafe.Pointer(&fd))
 }
-func read_trampoline(fd int32, p unsafe.Pointer, n int32) int32
+func read_trampoline(fd uintptr, p unsafe.Pointer, n int32) int32
+
 //--from
 func closefd(fd int32) int32
 //--to
@@ -23,6 +25,7 @@ func closefd(fd int32) int32 {
 	return libcCall(unsafe.Pointer(abi.FuncPCABI0(closefd_trampoline)), unsafe.Pointer(&fd))
 }
 func closefd_trampoline(fd int32) int32
+
 //--from
 func exit(code int32)
 //--to
