@@ -185,12 +185,6 @@ int32_t hitsumabushi_closefd(int32_t fd) {
   return 0;
 }
 
-uint32_t hitsumabushi_gettid() {
-  uint64_t tid64 = (uint64_t)(pthread_self());
-  uint32_t tid = (uint32_t)(tid64 >> 32) ^ (uint32_t)(tid64);
-  return tid;
-}
-
 int64_t hitsumabushi_nanotime1() {
   struct timespec tp;
   hitsumabushi_clock_gettime(CLOCK_MONOTONIC, &tp);
@@ -214,10 +208,6 @@ int32_t hitsumabushi_open(char *name, int32_t mode, int32_t perm) {
   fprintf(stderr, "syscall open(%s, %d, %d) is not implemented\n", name, mode, perm);
   const static int kENOENT = 0x2;
   return kENOENT;
-}
-
-int32_t hitsumabushi_osyield() {
-  return sched_yield();
 }
 
 int32_t hitsumabushi_sched_getaffinity(pid_t pid, size_t cpusetsize, void *mask) {
@@ -269,8 +259,4 @@ int32_t hitsumabushi_write1(uintptr_t fd, void *p, int32_t n) {
   }
   pthread_mutex_unlock(&m);
   return ret;
-}
-
-void hitsumabushi_exit(int32_t code) {
-  exit(code);
 }
